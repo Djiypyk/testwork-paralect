@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/testwork-paralect/static/css/main.cb95e5eb.css",
-    "main.js": "/testwork-paralect/static/js/main.7c23291e.js",
+    "main.css": "/testwork-paralect/static/css/main.56f82560.css",
+    "main.js": "/testwork-paralect/static/js/main.a292ff22.js",
     "static/js/787.106f446a.chunk.js": "/testwork-paralect/static/js/787.106f446a.chunk.js",
     "static/media/github.svg": "/testwork-paralect/static/media/github.a7bad06b90c0d43fa22d9f95260f16f5.svg",
     "static/media/followers.svg": "/testwork-paralect/static/media/followers.6543c8b039ed15f989df.svg",
@@ -10,12 +10,12 @@
     "static/media/find.svg": "/testwork-paralect/static/media/find.5e71efd59e1286616282.svg",
     "index.html": "/testwork-paralect/index.html",
     "static/media/following.svg": "/testwork-paralect/static/media/following.cec9413a19b62c042164.svg",
-    "main.cb95e5eb.css.map": "/testwork-paralect/static/css/main.cb95e5eb.css.map",
-    "main.7c23291e.js.map": "/testwork-paralect/static/js/main.7c23291e.js.map",
+    "main.56f82560.css.map": "/testwork-paralect/static/css/main.56f82560.css.map",
+    "main.a292ff22.js.map": "/testwork-paralect/static/js/main.a292ff22.js.map",
     "787.106f446a.chunk.js.map": "/testwork-paralect/static/js/787.106f446a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.cb95e5eb.css",
-    "static/js/main.7c23291e.js"
+    "static/css/main.56f82560.css",
+    "static/js/main.a292ff22.js"
   ]
 }

@@ -1,0 +1,23 @@
+.startPage {
+    width: 210px;
+    height: 196px;
+    margin: 198px auto 0 auto;
+    text-align: center;
+    /*background: url("../../c1-main/common/assets/img/bigSearchSvg.svg") no-repeat top ;*/
+}
+.startPage_resultBlock{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.startPage_resultBlock img {
+    width: 110px;
+    height: 110px;
+    margin-bottom: 24px;
+}
+
+.startPage_resultBlock span {
+    line-height: 30px;
+    font-size: 22px;
+    color: #808080;;
+}

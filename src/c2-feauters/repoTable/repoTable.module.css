@@ -1,0 +1,25 @@
+.repoTable {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.table_title {
+    font-weight: 600;
+    font-size: 32px;
+}
+
+.table_repo_card {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 6px;
+    margin: 24px 0;
+    padding: 24px 32px;
+}
+
+.table_repo_card a {
+    color: #0064EB;
+    text-decoration: none;
+    font-size: 24px;
+    margin-bottom: 16px;
+}

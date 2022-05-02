@@ -1,5 +1,5 @@
 .startPage {
-    width: 210px;
+    max-width: 270px;
     height: 196px;
     margin: 198px auto 0 auto;
     text-align: center;
@@ -18,6 +18,17 @@
 
 .startPage_resultBlock span {
     line-height: 30px;
+    width: 230px;
     font-size: 22px;
     color: #808080;;
+}
+
+@media (max-width: 576px) {
+    .startPage{
+        margin-top: 10px;
+    }
+    .startPage_resultBlock img {
+        width: 76px;
+    }
+
 }

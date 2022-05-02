@@ -1,0 +1,82 @@
+.foundUser_section {
+    width: 292px;
+    height: 432px;
+    display: flex;
+    flex-direction: column;
+    margin: 14px 116px 0 0;
+}
+
+.userAvatar {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    margin-bottom: 28px;
+}
+
+.userInfo_block {
+    display: flex;
+    flex-direction: column;
+    width: 292px;
+}
+
+.userName {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.userNickName {
+    color: #0064EB;
+    font-size: 18px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.userInfo_block a:hover {
+    color: #7072ff;
+}
+
+.followerInfo_block {
+    display: flex;
+    justify-content: space-between;
+}
+
+.followers {
+    background: url("../../../c1-main/common/assets/img/followers.svg") no-repeat left;
+    padding-left: 28px;
+    padding-top: 3px;
+}
+
+.following {
+    background: url("../../../c1-main/common/assets/img/following.svg") no-repeat left;
+    padding-left: 26px;
+    padding-top: 3px;
+}
+
+@media (max-width: 576px) {
+    .foundUser_section {
+        width: 100%;
+    }
+
+    .userAvatar {
+        width: 200px;
+        height: 200px;
+    }
+
+    .userInfo_block {
+        width: 240px;
+    }
+
+    .userName {
+        font-size: 24px;
+    }
+
+    .followerInfo_block {
+        flex-direction: column;
+    }
+
+    .followers {
+        margin-bottom: 10px;
+    }
+}

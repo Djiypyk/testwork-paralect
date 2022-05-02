@@ -11,8 +11,15 @@ export const userApi = {
             const res = await instance.get(`users/${username}`)
             return res.data
         } catch (e) {
-            console.log(e as AxiosError)
-            // return (e as AxiosError) || 'some error'
+            return 'some error'
         }
     },
+    getUserRepos: async (username: string) => {
+        try {
+            const res = await instance.get(`users/${username}/repos`)
+            return res.data
+        } catch (e) {
+            return 'some error'
+        }
+    }
 }

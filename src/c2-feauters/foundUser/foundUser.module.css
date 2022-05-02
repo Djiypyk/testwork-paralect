@@ -1,11 +1,14 @@
 .foundUser_wrapper {
-    display: flex;
-    /*justify-content: space-between;*/
     margin-top: 24px;
 }
+.foundUser_block{
+    display: flex;
+}
+.foundUser_paginator{
 
+}
 @media (max-width: 576px) {
-    .foundUser_wrapper {
+    .foundUser_block {
         flex-direction: column;
     }
 

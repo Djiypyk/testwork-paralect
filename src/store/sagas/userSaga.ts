@@ -2,20 +2,26 @@ import {SagaIterator} from 'redux-saga'
 import {call, put, takeLatest} from 'redux-saga/effects'
 import {UserT} from "../../types/UserT";
 import {userApi} from "../../api/userApi";
-import {setError, setRepos, setUserInfo} from "../reducers/userReducer";
+import {setError, setRepos, setRequestStatus, setUserInfo} from "../reducers/userReducer";
 import {EUserSaga} from "../../enum/EUserSaga";
-import {AxiosError} from "axios";
+import {AxiosError, AxiosResponse} from "axios";
 import {RepoT} from "../../types/RepoT";
 
 
-function* userWorker({payload}: SetUserInfoST) {
+function* userWorker({payload}: SetUserInfoST): Generator {
+    yield put(setRequestStatus('loading'))
     try {
         // @ts-ignore
-        const res: UserT = yield call(userApi.getUser, payload)
-        yield put(setUserInfo(res))
+        const res: AxiosResponse<UserT> = yield call(userApi.getUser, payload)
+        yield put(setRequestStatus('succeeded'))
+        console.log(res.data)
+        yield put(setUserInfo(res.data))
     } catch (e) {
-        debugger
-        yield put(setError((e as AxiosError).message))
+        yield put(setRequestStatus('failed'))
+        yield put(setError((e as AxiosError)?.response?.data))
+        console.warn(e as AxiosError)
+    } finally {
+        yield put(setRequestStatus('idle'))
     }
 }
 
@@ -23,20 +29,27 @@ export function* userWatcher(): SagaIterator {
     yield takeLatest(EUserSaga.SetUser, userWorker)
 }
 
-function* reposWorker({payload}: SetUserReposST) {
+function* reposWorker({payload}: SetUserReposST): Generator {
+    yield put(setRequestStatus('loading'))
     try {
         // @ts-ignore
-        const res: RepoT[] = yield call(userApi.getUserRepos, payload)
-        yield put(setRepos(res))
+        const res: AxiosResponse<RepoT[]> = yield call(userApi.getUserRepos, payload)
+        yield put(setRequestStatus('succeeded'))
+        yield put(setRepos(res.data))
     } catch (e) {
-        debugger
-        yield put(setError((e as AxiosError).message))
+        yield put(setRequestStatus('failed'))
+        yield put(setError((e as AxiosError)?.response?.data))
+        console.warn((e as AxiosError)?.response?.data)
+    } finally {
+        yield put(setRequestStatus('idle'))
     }
 }
+
 
 export function* reposWatcher(): SagaIterator {
     yield takeLatest(EUserSaga.SetRepos, reposWorker)
 }
+
 export const setUserInfoS = (payload: string) => ({type: EUserSaga.SetUser, payload} as const)
 type SetUserInfoST = ReturnType<typeof setUserInfoS>
 

@@ -4,6 +4,7 @@ import {RepoT} from "../../types/RepoT";
 
 const initialState = {
     isInitialized: false,
+    status: 'idle' as RequestStatusType,
     error: '',
     findName: '',
     user: {} as UserT,
@@ -14,10 +15,8 @@ const slice = createSlice({
     name: 'users',
     initialState,
     reducers: {
-
-        setError: (state, action: PayloadAction<string>) => {
-            debugger
-            state.error = action.payload
+        setError: (state, action: PayloadAction<any>) => {
+            state.error = action.payload.message
         },
         findUser: (state, action: PayloadAction<string>) => {
             state.findName = action.payload
@@ -27,12 +26,15 @@ const slice = createSlice({
         },
         setRepos: (state, action: PayloadAction<RepoT[]>) => {
             state.repos = action.payload
+        },
+        setRequestStatus: (state, action: PayloadAction<RequestStatusType>) => {
+            state.status = action.payload
         }
     },
 })
 export const userReducer = slice.reducer
 
-export const {setError, setUserInfo, findUser, setRepos} = slice.actions
+export const {setError, setUserInfo, findUser, setRepos, setRequestStatus} = slice.actions
 
 
-// export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
+export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'

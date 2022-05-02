@@ -1,6 +1,6 @@
 .repoTable {
     width: 100%;
-    margin: 0 auto;
+    overflow: hidden;
 }
 
 .table_title {
@@ -22,4 +22,15 @@
     text-decoration: none;
     font-size: 24px;
     margin-bottom: 16px;
+}
+
+@media (max-width: 576px){
+    .table_repo_card {
+        font-size: 14px;
+    }
+    .table_repo_card a {
+        font-weight: 600;
+        font-size: 16px;
+
+    }
 }

@@ -1,12 +1,14 @@
-import React, {memo} from "react";
+import React from "react";
 import styles from './header.module.css'
 import githubIcon from '../../c1-main/common/assets/img/github.svg'
 import {DebounceSearchInput} from "../../c1-main/components/input/DebounceSearchInput";
-import {useAppDispatch} from "../../hooks/useAppDispatchAndSelector";
+import {useAppDispatch, useAppSelector} from "../../hooks/useAppDispatchAndSelector";
 import {setUserInfoS} from "../../store/sagas/userSaga";
-import {findUser} from "../../store/reducers/userReducer";
+import {findUser, RequestStatusType} from "../../store/reducers/userReducer";
+import {Loader} from "../../c1-main/common/loader/Loader";
 
-export const Header = memo(() => {
+export const Header = () => {
+    const requestStatus = useAppSelector<RequestStatusType>(state => state.users.status)
     const dispatch = useAppDispatch()
     const searchByUserName = (username: string) => {
         const userName = username.toLowerCase()
@@ -18,6 +20,7 @@ export const Header = memo(() => {
         <div className={styles.header}>
             <img className={styles.img} src={githubIcon} alt="GitHub Icon"/>
             <DebounceSearchInput placeholder={'Enter GitHub username'} searchValue={searchByUserName}/>
+            {requestStatus === 'loading' ? <Loader/> : ''}
         </div>
     )
-})
+}

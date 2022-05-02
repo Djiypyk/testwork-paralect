@@ -1,4 +1,4 @@
-import axios, {AxiosError} from 'axios'
+import axios from 'axios'
 
 export const instance = axios.create({
     baseURL: 'https://api.github.com/',
@@ -7,19 +7,16 @@ export const instance = axios.create({
 
 export const userApi = {
     getUser: async (username: string) => {
-        try {
-            const res = await instance.get(`users/${username}`)
-            return res.data
-        } catch (e) {
-            return 'some error'
-        }
+        return await instance.get(`users/${username}`)
+
     },
     getUserRepos: async (username: string) => {
-        try {
-            const res = await instance.get(`users/${username}/repos`)
-            return res.data
-        } catch (e) {
-            return 'some error'
-        }
+        // const res = await instance.get(`users/${username}/repos?per_page=4&page=${page}`)
+        return await instance.get(`users/${username}/repos`)
     }
 }
+
+// type getRepoPayload = {
+//     per_page: number
+//     page: number
+// }

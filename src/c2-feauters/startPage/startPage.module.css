@@ -1,14 +1,15 @@
 .startPage {
-    max-width: 270px;
+    width: 100%;
     height: 196px;
     margin: 198px auto 0 auto;
-    text-align: center;
-    /*background: url("../../c1-main/common/assets/img/bigSearchSvg.svg") no-repeat top ;*/
+
 }
 .startPage_resultBlock{
     display: flex;
     flex-direction: column;
+    text-align: center;
     align-items: center;
+    margin: 0 auto;
 }
 .startPage_resultBlock img {
     width: 110px;

@@ -10,7 +10,7 @@ export const RepoTable = () => {
     const reposLength = useAppSelector<number>(state => state.users.repos.length)
 
     const repoCard = repos.map(r => {
-        return <div className={styles.table_repo_card}>
+        return <div className={styles.table_repo_card} key={r.id}>
             <a href={r.html_url} target={'_blank'} rel='noreferrer'>{r.name}</a>
             <span>{r.description}</span>
         </div>
@@ -24,8 +24,6 @@ export const RepoTable = () => {
                     {repoCard}
                 </section>
             }
-
-
         </div>
 
     </div>)

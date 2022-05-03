@@ -1,15 +1,10 @@
-import React, {useEffect, useMemo} from "react";
+import React, {useMemo} from "react";
 import styles from './userInfo.module.css'
-import {useAppDispatch, useAppSelector} from "../../../hooks/useAppDispatchAndSelector";
-import {serUserReposS} from "../../../store/sagas/userSaga";
+import {useAppSelector} from "../../../hooks/useAppDispatchAndSelector";
 import {UserT} from "../../../types/UserT";
 
 export const UserInfo = () => {
     const {login, name, followers, following, avatar_url, html_url} = useAppSelector<UserT>(state => state.users.user)
-    const dispatch = useAppDispatch()
-    useEffect(() => {
-        dispatch(serUserReposS(login))
-    }, [dispatch, login])
     const convertFollowing = useMemo(() => {
         return following > 1000 ? `${following / 1000}k` : following
     }, [following])

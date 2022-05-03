@@ -1,29 +1,37 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styles from './foundUser.module.css'
 import {RepoTable} from "../repoTable/RepoTable";
 import {UserInfo} from "./userInfo/UserInfo";
-import {useAppSelector} from "../../hooks/useAppDispatchAndSelector";
+import {useAppDispatch, useAppSelector} from "../../hooks/useAppDispatchAndSelector";
 import {Pagination} from "../../c1-main/components/pagination/Paginator";
-import {RepoT} from "../../types/RepoT";
-
+import {paginationChange} from "../../store/reducers/reposReducer";
+import {serUserReposS} from "../../store/sagas/reposSaga";
 
 export const FoundUser = () => {
-    const repos = useAppSelector(state => state.users.repos)
-
-    const [currentPage, setCurrentPage] = useState(1);
-    const [reposPerPage] = useState(4);
-    const lastRepoIndex = currentPage * reposPerPage;
-    const firstRepoIndex = lastRepoIndex - reposPerPage;
-    const currentRepo: RepoT[] = repos.length ? repos.slice(firstRepoIndex, lastRepoIndex) : [];
-
+    const repos = useAppSelector(state => state.repos.repos)
+    const login = useAppSelector(state => state.users.user.login)
+    const reposSizeForPage = useAppSelector(state => state.repos.repoSizeForPage)
+    const currentPageState = useAppSelector(state => state.repos.currentPage)
+    const dispatch = useAppDispatch()
+    const [currentPage, setCurrentPage] = useState<number>(currentPageState);
+    const lastRepoIndex = currentPage * reposSizeForPage;
+    const firstRepoIndex = lastRepoIndex - reposSizeForPage;
+    // const currentRepo: RepoT[] = repos.length ? repos.slice(firstRepoIndex, lastRepoIndex) : [];
+    useEffect(() => {
+        dispatch(serUserReposS({username: login, page: currentPage}))
+    }, [dispatch, login, currentPage])
     const handlerPaginate = (pageNumber: number) => {
         setCurrentPage(pageNumber)
+        dispatch(paginationChange(pageNumber))
     }
     const handlerNextPage = () => {
         setCurrentPage(prev => prev + 1)
+        dispatch(paginationChange(currentPage))
+
     }
     const handlerPrevPage = () => {
         setCurrentPage(prev => prev - 1)
+        dispatch(paginationChange(currentPage))
     }
 
     return (
@@ -33,7 +41,7 @@ export const FoundUser = () => {
                 <RepoTable/>
             </div>
             <div className={styles.foundUser_paginator}>
-                <Pagination reposPerPage={reposPerPage}
+                <Pagination reposPerPage={reposSizeForPage}
                             totalRepos={repos.length}
                             handlerPaginate={handlerPaginate}
                             handlerNextPage={handlerNextPage}

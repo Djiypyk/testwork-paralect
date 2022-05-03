@@ -18,11 +18,11 @@ export const App = () => {
         <div className={styles.App}>
             <Header/>
             <div className={styles.app_container}>
-                {error
-                    ? <EmptyPage img={noUserIcon} descriptions={'User not found'}/>
-                    : (findUser && userInfo)
+                {!error
+                    ? (findUser && userInfo)
                         ? <FoundUser/>
                         : <EmptyPage img={searchIcon} descriptions={'Start with searching a GitHub user'}/>
+                    : <EmptyPage img={noUserIcon} descriptions={'User not found'}/>
                 }
 
 

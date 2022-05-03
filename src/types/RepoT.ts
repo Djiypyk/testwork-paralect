@@ -1,5 +1,4 @@
 export type RepoT = {
-
     "id": number
     "node_id": string
     "name": string
@@ -96,4 +95,13 @@ export type RepoT = {
     "open_issues": number
     "watchers": number
     "default_branch": string
+}
+
+export type getRepoPayload = {
+    username: string
+    type: string
+    sort: string
+    direction: string
+    per_page: number
+    page: number
 }

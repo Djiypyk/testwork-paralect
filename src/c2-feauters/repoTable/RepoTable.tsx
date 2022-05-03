@@ -6,8 +6,8 @@ import {useAppSelector} from "../../hooks/useAppDispatchAndSelector";
 import {RepoT} from "../../types/RepoT";
 
 export const RepoTable = () => {
-    const repos = useAppSelector<RepoT[]>(state => state.users.repos)
-    const reposLength = useAppSelector<number>(state => state.users.repos.length)
+    const repos = useAppSelector<RepoT[]>(state => state.repos.repos)
+    const reposLength = useAppSelector<number>(state => state.repos.repos.length)
 
     const repoCard = repos.map(r => {
         return <div className={styles.table_repo_card} key={r.id}>

@@ -5,7 +5,7 @@ import {RepoT} from "../../types/RepoT";
 const initialState = {
     isInitialized: false,
     status: 'idle' as RequestStatusType,
-    error: '',
+    errorUser: false,
     findName: '',
     user: {} as UserT,
     repos: [] as RepoT[]
@@ -15,8 +15,8 @@ const slice = createSlice({
     name: 'users',
     initialState,
     reducers: {
-        setError: (state, action: PayloadAction<any>) => {
-            state.error = action.payload.message
+        setError: (state, action: PayloadAction<boolean>) => {
+            state.errorUser = action.payload
         },
         findUser: (state, action: PayloadAction<string>) => {
             state.findName = action.payload

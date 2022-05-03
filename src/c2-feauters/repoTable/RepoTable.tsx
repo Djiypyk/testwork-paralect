@@ -1,5 +1,5 @@
 import React from "react";
-import {StartPage} from "../startPage/StartPage";
+import {EmptyPage} from "../emptyPage/EmptyPage";
 import noRepo from '../../c1-main/common/assets/img/repoIsEmpty.svg'
 import styles from './repoTable.module.css'
 import {useAppSelector} from "../../hooks/useAppDispatchAndSelector";
@@ -15,16 +15,15 @@ export const RepoTable = () => {
             <span>{r.description}</span>
         </div>
     })
-    return (<div>
+    return (
         <div className={styles.repoTable}>
             {reposLength < 1
-                ? <StartPage img={noRepo} descriptions={'Repository list is empty'}/>
+                ? <EmptyPage img={noRepo} descriptions={'Repository list is empty'}/>
                 : <section>
                     <span className={styles.table_title}>Repositories ({reposLength})</span>
                     {repoCard}
                 </section>
             }
         </div>
-
-    </div>)
+    )
 }

@@ -10,6 +10,7 @@ import {RepoT} from "../../types/RepoT";
 
 function* userWorker({payload}: SetUserInfoST): Generator {
     yield put(setRequestStatus('loading'))
+    yield put(setError(false))
     try {
         // @ts-ignore
         const res: AxiosResponse<UserT> = yield call(userApi.getUser, payload)
@@ -18,7 +19,9 @@ function* userWorker({payload}: SetUserInfoST): Generator {
         yield put(setUserInfo(res.data))
     } catch (e) {
         yield put(setRequestStatus('failed'))
-        yield put(setError((e as AxiosError)?.response?.data))
+        if ((e as AxiosError)?.response?.status === 404) {
+            yield put(setError(true))
+        }
         console.warn(e as AxiosError)
     } finally {
         yield put(setRequestStatus('idle'))
@@ -38,7 +41,7 @@ function* reposWorker({payload}: SetUserReposST): Generator {
         yield put(setRepos(res.data))
     } catch (e) {
         yield put(setRequestStatus('failed'))
-        yield put(setError((e as AxiosError)?.response?.data))
+        // yield put(setError((e as AxiosError)?.response?.data))
         console.warn((e as AxiosError)?.response?.data)
     } finally {
         yield put(setRequestStatus('idle'))

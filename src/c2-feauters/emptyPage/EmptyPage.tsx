@@ -1,11 +1,11 @@
 import React, {FC, memo} from "react";
-import styles from './startPage.module.css'
+import styles from './emptyPage.module.css'
 type StartPagePropT = {
     img: string
     descriptions: string
 }
 
-export const StartPage: FC<StartPagePropT> = memo(({img, descriptions}) => {
+export const EmptyPage: FC<StartPagePropT> = memo(({img, descriptions}) => {
 
     return (
         <div className={styles.startPage}>

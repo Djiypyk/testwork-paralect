@@ -4,11 +4,12 @@ import noRepo from '../../c1-main/common/assets/img/repoIsEmpty.svg'
 import styles from './repoTable.module.css'
 import {useAppSelector} from "../../hooks/useAppDispatchAndSelector";
 import {RepoT} from "../../types/RepoT";
-type RepoTable = {
+
+type RepoTableT = {
     repos: RepoT[]
 }
 
-export const RepoTable: FC<RepoTable> = ({repos}) => {
+export const RepoTable: FC<RepoTableT> = ({repos}) => {
     const reposLength = useAppSelector<number>(state => state.repos.repos.length)
 
     const repoCard = repos.map(r => {

@@ -12,7 +12,6 @@ function* reposWorker({payload}: SetUserReposST): Generator {
     try {
         // @ts-ignore
         const res: AxiosResponse<RepoT[]> = yield call(reposApi.getUserRepos, payload)
-        debugger
         yield put(setRequestStatus('succeeded'))
         yield put(setRepos(res.data))
     } catch (e) {

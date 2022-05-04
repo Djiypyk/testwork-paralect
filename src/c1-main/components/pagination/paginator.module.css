@@ -23,10 +23,10 @@ button {
 
 .paginationDivItems {
     width: 21px;
+    padding: 2px;
     border-radius: 3px;
     cursor: pointer;
     text-align: center;
-    padding-top: 4px;
 }
 
 .paginationDivItems a {
@@ -37,6 +37,10 @@ button {
 }
 
 .paginationDivItems:hover {
+    background-color: #599dff;
+    color: white;
+}
+.paginationDivItems_Active{
     background-color: #0064EB;
     color: white;
 }
@@ -45,24 +49,14 @@ button {
     font-size: 16px;
 }
 
-.paginationIconLeft {
+.paginationIcon {
     font-size: 16px;
     font-weight: 900;
     color: #808080;
+    padding-bottom: 3px;
 }
 
-.paginationIconLeft:hover {
-    opacity: 0.8;
-    color: #0064EB;
-}
-
-.paginationIconRight {
-    font-size: 16px;
-    font-weight: 900;
-    color: #808080;
-}
-
-.paginationIconRight:hover {
+.paginationIcon:hover {
     opacity: 0.8;
     color: #0064EB;
 }

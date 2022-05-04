@@ -24,31 +24,48 @@ export const Pagination: FC<PaginationPropsType> = memo(({
                                                              lastRepoIndex,
                                                          }) => {
 
-        const pageNumbers = [];
+        const pageNumbers: number[] = [];
         for (let i = 1; i <= Math.ceil(totalRepos / reposPerPage); i++) {
             pageNumbers.push(i)
         }
-
+        const numberItem = pageNumbers.map((number) => {
+            if (number === Math.min(...pageNumbers)) {
+                return <div key={number}
+                            onClick={() => handlerPaginate(number)}
+                            className={number === currentPage
+                                ? `${styles.paginationDivItems} ${styles.paginationDivItems_Active}`
+                                : styles.paginationDivItems}>
+                    <span className={styles.paginationItems}>{number}</span>
+                </div>
+            } else if (currentPage - 2 === number) {
+                return <div>...</div>
+            } else if (number === Math.max(...pageNumbers) || currentPage + 2 > number) {
+                return <div key={number}
+                            onClick={() => handlerPaginate(number)}
+                            className={number === currentPage
+                                ? `${styles.paginationDivItems} ${styles.paginationDivItems_Active}`
+                                : styles.paginationDivItems}>
+                    <span className={styles.paginationItems}>{number}</span>
+                </div>
+            } else if (number === Math.max(...pageNumbers) - 1) {
+                return <div>...</div>
+            } else {
+                return null
+            }
+        })
         return (
             <div className={styles.paginationWrapper}>
                 <div className={styles.paginationInfo}>
                     {firstRepoIndex + 1}-{lastRepoIndex} of {totalRepos} items
                 </div>
                 <button disabled={currentPage === 1} onClick={handlerPrevPage}>
-                    <span className={styles.paginationIconLeft}>&lt;</span>
+                    <span className={styles.paginationIcon}>&lt;</span>
                 </button>
                 {
-                    pageNumbers.map(number => {
-                        return (
-                            <div key={number} className={styles.paginationDivItems}>
-                        <span className={styles.paginationItems}
-                              onClick={() => handlerPaginate(number)}>{number}</span>
-                            </div>
-                        )
-                    })
+                    numberItem
                 }
                 <button disabled={currentPage === pageNumbers.length} onClick={handlerNextPage}>
-                    <span className={styles.paginationIconRight}>&gt;</span>
+                    <span className={styles.paginationIcon}>&gt;</span>
                 </button>
             </div>
         );

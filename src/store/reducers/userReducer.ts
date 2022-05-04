@@ -1,6 +1,8 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {UserT} from "../../types/UserT";
 
+export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
+
 const initialState = {
     status: 'idle' as RequestStatusType,
     errorUser: false,
@@ -29,6 +31,3 @@ const slice = createSlice({
 export const userReducer = slice.reducer
 
 export const {setError, setUserInfo, findUser, setRequestStatus} = slice.actions
-
-
-export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'

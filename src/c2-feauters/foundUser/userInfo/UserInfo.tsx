@@ -1,14 +1,14 @@
-import React, {useMemo} from "react";
+import React, {FC, useMemo} from "react";
 import styles from './userInfo.module.css'
 import {useAppSelector} from "../../../hooks/useAppDispatchAndSelector";
 import {UserT} from "../../../types/UserT";
 
-export const UserInfo = () => {
+export const UserInfo: FC = () => {
     const {login, name, followers, following, avatar_url, html_url} = useAppSelector<UserT>(state => state.users.user)
-    const convertFollowing = useMemo(() => {
+    const convertFollowing = useMemo((): string | number => {
         return following > 1000 ? `${following / 1000}k` : following
     }, [following])
-    const convertFollowers = useMemo(() => {
+    const convertFollowers = useMemo((): string | number => {
         return followers > 1000 ? `${followers / 1000}k` : followers
     }, [followers])
 

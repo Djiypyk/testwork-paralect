@@ -11,4 +11,7 @@
     .App {
         height: 100%;
     }
+    .app_container{
+        margin-top: 150px;
+    }
 }

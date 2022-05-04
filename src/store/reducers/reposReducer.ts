@@ -3,8 +3,8 @@ import {RepoT} from "../../types/RepoT";
 
 const initialState = {
     repos: [] as RepoT[],
-    currentPage: 2,
-    repoSizeForPage: 4,
+    currentPage: 1,
+    repoSizePerPage: 4,
     totalRepoCount: 0,
 }
 
@@ -16,7 +16,6 @@ const slice = createSlice({
             state.repos = action.payload
         },
         paginationChange: (state, action: PayloadAction<number>) => {
-            debugger
             state.currentPage = action.payload
         }
     },
@@ -24,4 +23,4 @@ const slice = createSlice({
 export const reposReducer = slice.reducer
 export const {setRepos, paginationChange} = slice.actions
 
-export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
+

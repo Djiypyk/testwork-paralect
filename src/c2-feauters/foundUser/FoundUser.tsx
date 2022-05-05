@@ -16,7 +16,6 @@ export const FoundUser: FC = () => {
     const dispatch = useAppDispatch()
     const [currentPage, setCurrentPage] = useState<number>(currentPageState);
 
-
     const lastRepoIndex: number = currentPage * reposSizeForPage;
     const firstRepoIndex: number = lastRepoIndex - reposSizeForPage;
     const currentRepo: RepoT[] = repos.length ? repos.slice(firstRepoIndex, lastRepoIndex) : [];

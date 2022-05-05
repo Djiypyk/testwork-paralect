@@ -29,7 +29,7 @@ export const Pagination: FC<PaginationPropsType> = memo(({
             pageNumbers.push(i)
         }
         const numberItem = pageNumbers.map((number) => {
-            if (number === Math.min(...pageNumbers)) {
+            if (number === Math.min(...pageNumbers) || number === Math.max(...pageNumbers)) {
                 return <div key={number}
                             onClick={() => handlerPaginate(number)}
                             className={number === currentPage
@@ -37,9 +37,7 @@ export const Pagination: FC<PaginationPropsType> = memo(({
                                 : styles.paginationDivItems}>
                     <span className={styles.paginationItems}>{number}</span>
                 </div>
-            } else if (currentPage - 2 === number) {
-                return <div>...</div>
-            } else if (number === Math.max(...pageNumbers) || currentPage + 2 > number) {
+            } else if (number === currentPage || number === currentPage - 1 || number === currentPage + 1) {
                 return <div key={number}
                             onClick={() => handlerPaginate(number)}
                             className={number === currentPage
@@ -47,7 +45,7 @@ export const Pagination: FC<PaginationPropsType> = memo(({
                                 : styles.paginationDivItems}>
                     <span className={styles.paginationItems}>{number}</span>
                 </div>
-            } else if (number === Math.max(...pageNumbers) - 1) {
+            } else if (number === currentPage - 2 || number === currentPage + 2) {
                 return <div>...</div>
             } else {
                 return null

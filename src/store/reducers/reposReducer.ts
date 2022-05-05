@@ -5,7 +5,6 @@ const initialState = {
     repos: [] as RepoT[],
     currentPage: 1,
     repoSizePerPage: 4,
-    totalRepoCount: 0,
 }
 
 const slice = createSlice({

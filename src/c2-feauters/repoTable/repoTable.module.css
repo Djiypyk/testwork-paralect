@@ -46,4 +46,14 @@
     .table_title {
         font-size: 30px;
     }
+
+    .table_repo_card {
+        padding: 0 26px;
+    }
+}
+
+@media (max-width: 375px) {
+    .table_title {
+        font-size: 24px;
+    }
 }

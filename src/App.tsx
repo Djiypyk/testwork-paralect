@@ -7,7 +7,6 @@ import {FoundUser} from "./c2-feauters/foundUser/FoundUser";
 import searchIcon from './c1-main/common/assets/img/bigSearchSvg.svg'
 import noUserIcon from './c1-main/common/assets/img/NotUser.svg'
 
-
 export const App = () => {
     const userInfo = useAppSelector<string | null>(state => state.users.user.login)
     const findUser = useAppSelector<string>(state => state.users.findName)

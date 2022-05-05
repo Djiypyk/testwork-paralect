@@ -14,7 +14,7 @@ button {
     align-items: center;
     height: 26px;
     justify-content: flex-end;
-    gap: 16px;
+    gap: 12px;
     margin-top: 24px;
     margin-bottom: 20px;
     text-align: center;
@@ -40,7 +40,8 @@ button {
     background-color: #599dff;
     color: white;
 }
-.paginationDivItems_Active{
+
+.paginationDivItems_Active {
     background-color: #0064EB;
     color: white;
 }
@@ -73,8 +74,18 @@ button {
 }
 
 @media (max-width: 576px) {
-    .paginationInfo{
+    .paginationWrapper {
+        margin-right: -50px;
+    }
+
+    .paginationDivItems {
+        width: 26px;
+        border-radius: 3px;
+    }
+
+    .paginationInfo {
         font-size: 12px;
+        margin-right: 0;
     }
 
 }

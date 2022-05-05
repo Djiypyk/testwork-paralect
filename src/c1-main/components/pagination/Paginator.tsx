@@ -46,7 +46,7 @@ export const Pagination: FC<PaginationPropsType> = memo(({
                     <span className={styles.paginationItems}>{number}</span>
                 </div>
             } else if (number === currentPage - 2 || number === currentPage + 2) {
-                return <div>...</div>
+                return <div key={number}>...</div>
             } else {
                 return null
             }
@@ -56,9 +56,11 @@ export const Pagination: FC<PaginationPropsType> = memo(({
                 <div className={styles.paginationInfo}>
                     {firstRepoIndex + 1}-{lastRepoIndex} of {totalRepos} items
                 </div>
-                <button disabled={currentPage === 1} onClick={handlerPrevPage}>
-                    <span className={styles.paginationIcon}>&lt;</span>
-                </button>
+                <div>
+                    <button disabled={currentPage === 1} onClick={handlerPrevPage}>
+                        <span className={styles.paginationIcon}>&lt;</span>
+                    </button>
+                </div>
                 {
                     numberItem
                 }

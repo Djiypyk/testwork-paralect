@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {RepoT} from "../../types/RepoT";
 
-const initialState = {
+export const initialState = {
     repos: [] as RepoT[],
     currentPage: 1,
     repoSizePerPage: 4,

@@ -19,6 +19,7 @@ export const FoundUser: FC = () => {
     const lastRepoIndex: number = currentPage * reposSizeForPage;
     const firstRepoIndex: number = lastRepoIndex - reposSizeForPage;
     const currentRepo: RepoT[] = repos.length ? repos.slice(firstRepoIndex, lastRepoIndex) : [];
+
     useEffect(() => {
         dispatch(serUserReposS({username: login}))
     }, [dispatch, login])

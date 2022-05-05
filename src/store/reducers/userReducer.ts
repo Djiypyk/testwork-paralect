@@ -3,7 +3,7 @@ import {UserT} from "../../types/UserT";
 
 export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
 
-const initialState = {
+export const initialState = {
     status: 'idle' as RequestStatusType,
     errorUser: false,
     findName: '',

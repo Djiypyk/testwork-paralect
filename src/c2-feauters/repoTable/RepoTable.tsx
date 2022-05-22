@@ -2,15 +2,15 @@ import React, {FC} from "react";
 import {EmptyPage} from "../emptyPage/EmptyPage";
 import noRepo from '../../c1-main/common/assets/img/repoIsEmpty.svg'
 import styles from './repoTable.module.css'
-import {useAppSelector} from "../../hooks/useAppDispatchAndSelector";
 import {RepoT} from "../../types/RepoT";
+import {useAppSelector} from "../../hooks/useAppDispatchAndSelector";
 
 type RepoTableT = {
     repos: RepoT[]
 }
 
 export const RepoTable: FC<RepoTableT> = ({repos}) => {
-    const reposLength = useAppSelector<number>(state => state.repos.repos.length)
+    const reposLength = useAppSelector<number>(state => state.users.user.public_repos)
 
     const repoCard = repos.map(r => {
         return <div className={styles.table_repo_card} key={r.id}>

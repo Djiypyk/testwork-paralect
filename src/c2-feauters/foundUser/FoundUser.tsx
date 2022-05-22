@@ -2,11 +2,11 @@ import React, {FC, useCallback, useEffect, useState} from "react";
 import styles from './foundUser.module.css'
 import {RepoTable} from "../repoTable/RepoTable";
 import {UserInfo} from "./userInfo/UserInfo";
-import {useAppDispatch, useAppSelector} from "../../hooks/useAppDispatchAndSelector";
 import {Pagination} from "../../c1-main/components/pagination/Paginator";
 import {paginationChange} from "../../store/reducers/reposReducer";
 import {serUserReposS} from "../../store/sagas/reposSaga";
 import {RepoT} from "../../types/RepoT";
+import {useAppDispatch, useAppSelector} from "../../hooks/useAppDispatchAndSelector";
 
 export const FoundUser: FC = () => {
     const repos = useAppSelector<RepoT[]>(state => state.repos.repos)

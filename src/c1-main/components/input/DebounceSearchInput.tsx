@@ -9,21 +9,16 @@ import React, {
     useCallback,
     useState,
 } from 'react'
-
 import styles from './input.module.css'
-
-
 import {EDebounceDelay} from "../../../enum/EDebounceDelay";
 import {useDebounce} from "../../../hooks/useDebounce";
 
 type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement>
-
 type DebounceSearchFieldPropsType = DefaultInputPropsType &
     RefAttributes<HTMLInputElement> & {
     searchValue: (value: string) => void
 }
-
 export const DebounceSearchInput: FC<DebounceSearchFieldPropsType> = memo(
     forwardRef(({searchValue, ...restProps}, ref) => {
         const [value, setValue] = useState('')
@@ -37,6 +32,7 @@ export const DebounceSearchInput: FC<DebounceSearchFieldPropsType> = memo(
         }, [debounceSearch])
         return (
             <input
+
                 className={styles.input}
                 ref={ref}
                 type="text"

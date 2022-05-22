@@ -1,7 +1,7 @@
 import React, {FC, useMemo} from "react";
 import styles from './userInfo.module.css'
-import {useAppSelector} from "../../../hooks/useAppDispatchAndSelector";
 import {UserT} from "../../../types/UserT";
+import {useAppSelector} from "../../../hooks/useAppDispatchAndSelector";
 
 export const UserInfo: FC = () => {
     const {login, name, followers, following, avatar_url, html_url} = useAppSelector<UserT>(state => state.users.user)

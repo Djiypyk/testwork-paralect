@@ -2,10 +2,10 @@ import React from "react";
 import styles from './header.module.css'
 import githubIcon from '../../c1-main/common/assets/img/github.svg'
 import {DebounceSearchInput} from "../../c1-main/components/input/DebounceSearchInput";
-import {useAppDispatch, useAppSelector} from "../../hooks/useAppDispatchAndSelector";
 import {setUserInfoS} from "../../store/sagas/userSaga";
 import {findUser, RequestStatusType} from "../../store/reducers/userReducer";
 import {Loader} from "../../c1-main/common/loader/Loader";
+import {useAppDispatch, useAppSelector} from "../../hooks/useAppDispatchAndSelector";
 
 export const Header = () => {
     const requestStatus = useAppSelector<RequestStatusType>(state => state.users.status)

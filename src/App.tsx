@@ -2,10 +2,10 @@ import React from 'react';
 import styles from './App.module.css';
 import {Header} from "./c2-feauters/header/Header";
 import {EmptyPage} from "./c2-feauters/emptyPage/EmptyPage";
-import {useAppSelector} from "./hooks/useAppDispatchAndSelector";
 import {FoundUser} from "./c2-feauters/foundUser/FoundUser";
 import searchIcon from './c1-main/common/assets/img/bigSearchSvg.svg'
 import noUserIcon from './c1-main/common/assets/img/NotUser.svg'
+import {useAppSelector} from "./hooks/useAppDispatchAndSelector";
 
 export const App = () => {
     const userInfo = useAppSelector<string | null>(state => state.users.user.login)

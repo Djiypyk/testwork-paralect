@@ -33,6 +33,7 @@ test('user should be stacked in state', () => {
     };
     const user: UserT = {
         login: 'Djiypyk',
+        public_repos: 12,
         name: 'Mikalai Zarazaka',
         following: 11,
         followers: 12,
